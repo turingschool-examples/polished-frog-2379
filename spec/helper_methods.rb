@@ -1,0 +1,21 @@
+def load_test_data
+  @hospital1 = Hospital.create({name: "Lexington Medical Center"})
+  @hospital2 = Hospital.create({name: "Craigs Discount Medical Market"})
+  @doctor1 = Doctor.create({name: "Mary", specialty: "General Practice", university: "USC", hospital_id: @hospital1.id})
+  @doctor2 = Doctor.create({name: "Bob", specialty: "Gastro", university: "BYU", hospital_id: @hospital1.id})
+  @doctor3 = Doctor.create({name: "Galorgalorg", specialty: "Neurology", university: "CSU", hospital_id: @hospital2.id})
+  @doctor4 = Doctor.create({name: "Carl", specialty: "Oncology", university: "Johns-Hopkins", hospital_id: @hospital2.id})
+  @patient1 = Patient.create({name: "Ryan", age: "37"})
+  @patient2 = Patient.create({name: "Katherine", age: "25"})
+  @patient3 = Patient.create({name: "Wyatt", age: "73"})
+  @patient4 = Patient.create({name: "Stephanie", age: "55"})
+
+  DoctorPatient.create({doctor_id: @doctor1.id, patient_id: @patient3.id})
+  DoctorPatient.create({doctor_id: @doctor1.id, patient_id: @patient2.id})
+  DoctorPatient.create({doctor_id: @doctor2.id, patient_id: @patient1.id})
+  DoctorPatient.create({doctor_id: @doctor2.id, patient_id: @patient4.id})
+  DoctorPatient.create({doctor_id: @doctor3.id, patient_id: @patient3.id})
+  DoctorPatient.create({doctor_id: @doctor3.id, patient_id: @patient2.id})
+  DoctorPatient.create({doctor_id: @doctor4.id, patient_id: @patient1.id})
+  DoctorPatient.create({doctor_id: @doctor4.id, patient_id: @patient4.id})
+end
