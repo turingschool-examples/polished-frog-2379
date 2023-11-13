@@ -1,0 +1,10 @@
+<h3> Information About Hospital <%= @hospital.name%></h3>
+  <section id="hospital-details">
+    <h5> Name: <%= @hospital.name %></h5>
+  </section>
+  <br>
+  <section id="doctors-list">
+    <h3> Doctor Information<% @hospital.doctor_patient_counts.each do |d| %></h3>
+      <h5>Doctor: <%= d.name %> - Patient Count: <%= d.patient_count %></h5>
+      <%end%></h5>
+  </section>
