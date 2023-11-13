@@ -46,16 +46,23 @@ RSpec.describe Doctor, type: :feature do
       end
     end
 
-    it "I see the three most popular patients that the doctor uses in their doctors" do
+    it "I see a button to remove a patient from that doctor's caseload. I click the button and am returned to the showpage where I do not see that patient. When I visit a different doctor's shw page that is caring for the patient, I stil see that patient" do
       @doctor4 = @hospital1.doctors.create!(name: "Doctor 4", specialty: "Card", university: "NSU")
-      @doctor5 = @hospital1.doctors.create!(name: "Doctor 5", specialty: "Card", university: "OSU")
-      @doctor6 = @hospital1.doctors.create!(name: "Doctor 6", specialty: "Card", university: "PSU")
       @doctor4.patients << @patient1
       @doctor4.patients << @patient2
-      @doctor4.patients << @patient3
-      @doctor5.patients << @patient1
-      @doctor5.patients << @patient2
-      @doctor6.patients << @patient2
+
+      visit "/doctors/#{@doctor4.id}"
+      expect(page).to have_content("Patient 1")
+      visit "/doctors/#{@doctor1.id}"
+      expect(page).to have_content("Patient 1")
+      click_button("Remove Patient from Doctor 1")
+      expect(current_path).to eq("/doctors/#{@doctor1.id}")
+      expect(page).to_not have_content("Patient 1")
+      visit "/doctors/#{@doctor4.id}"
+      expect(page).to have_content("Patient 1")
+      click_button("Remove Patient from Doctor 1")
+      expect(page).to_not have_content("Patient 1")
+
     end
   end
 
