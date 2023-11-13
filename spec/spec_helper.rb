@@ -7,6 +7,7 @@
 def test_data
 
   @greysloan = Hospital.create!(name: "Grey Sloan Memorial Hospital")
+  @seaside = Hospital.create!(name: "Seaside Health & Wellness Center")
 
   @meredith = @greysloan.doctors.create!(name: "Meredith Grey", specialty: "General", university: "Dartmouth College")
   @cristina = @greysloan.doctors.create!(name: "Cristina Yang", specialty: "Cardio", university: "Stanford University")
