@@ -32,6 +32,11 @@ def test_data
   DoctorPatient.create!(doctor: @doc3, patient: @patient1)
   DoctorPatient.create!(doctor: @doc2, patient: @patient4)
   DoctorPatient.create!(doctor: @doc1, patient: @patient4)
+  DoctorPatient.create!(doctor: @doc3, patient: @patient2)
+  DoctorPatient.create!(doctor: @doc3, patient: @patient3)
+  DoctorPatient.create!(doctor: @doc3, patient: @patient5)
+  DoctorPatient.create!(doctor: @doc2, patient: @patient1)
+  DoctorPatient.create!(doctor: @doc4, patient: @patient5)
 end
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
