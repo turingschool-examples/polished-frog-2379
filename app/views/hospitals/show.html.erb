@@ -1,0 +1,8 @@
+<h1><%= @hospital.name %></h1>
+
+<h2>Doctors</h2>
+<% @docs.each do | doc | %>
+  <section id="doc-<%= doc.id %>">
+    <p><%= "#{doc.name} | Patients: #{doc.patients.count}" %></p>
+  </section>
+<% end %>
