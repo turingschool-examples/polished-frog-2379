@@ -8,6 +8,6 @@
   <h5> Hospital: <%= @doctor.hospital.name %></h5>
   <section id="patient-list">
     <h5> Patients: <% @doctor.patients.each do |p| %></h5>
-      <li><%= p.name%></li>
+      <li><%= p.name%> <%= button_to "Remove #{p.name} From Caseload", hospital_doctor_patient_path(@doctor, p), method: :delete %></li><br>
     <%end%>
 </section>
