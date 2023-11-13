@@ -70,4 +70,11 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  # Factory Bot
+  config.include FactoryBot::Syntax::Methods
+
+  def saop
+    save_and_open_page
+  end
 end
