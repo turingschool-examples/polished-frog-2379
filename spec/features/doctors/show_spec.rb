@@ -58,6 +58,40 @@ RSpec.describe "doctors#show" do
         end
       end
     end
+
+    #     User Story 2, Remove a Patient from a Doctor
+    # ​
+    # As a visitor
+    # When I visit a Doctor's show page
+    # Then next to each patient's name, I see a button to remove that patient from that doctor's caseload
+    # When I click that button for one patient
+    # I'm brought back to the Doctor's show page
+    # And I no longer see that patient's name listed
+    # And when I visit a different doctor's show page that is caring for the same patient,
+    # Then I see that the patient is still on the other doctor's caseload
+    describe "US2." do
+      it "next to each patient's name I see a button to remove that patient from that doctor's caseload
+    when clicked, I'm brought back to the Doctor's show page and no longer see that patient's name listed
+      and when I visit another doctor's show page that is caring for the same patient, I see that patient is still on
+      the other doctor's caseload" do
+        visit "/doctors/#{@doctor1.id}"
+
+        within("#patient-#{@patient2.id}") do
+          expect(page).to have_button("Remove #{@patient2.name}")
+          click_button("Remove #{@patient2.name}")
+        end
+
+        expect(current_path).to eq("/doctors/#{@doctor1.id}")
+
+        expect(page).to_not have_content(@patient2.name)
+
+        visit "/doctors/#{@doctor2.id}"
+
+        within("#patient-#{@patient2.id}") do
+          expect(page).to have_content(@patient2.name)
+        end        
+      end
+    end
   end
 end
 
