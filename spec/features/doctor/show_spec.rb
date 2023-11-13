@@ -15,12 +15,13 @@ RSpec.describe Doctor, type: :feature do
 
 
       DoctorPatient.create!(doctor_id: @doctor_1.id, patient_id: @patient_1.id)
-      DoctorPatient.create!(doctor_id: @doctor_1.id, patient_id: @patient_2.id)
+
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_3.id)
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_1.id)
     end
     
     it "I see all of that doctor's information" do
+      DoctorPatient.create!(doctor_id: @doctor_1.id, patient_id: @patient_2.id)
       visit doctor_path(@doctor_1)
       expect(page).to have_content(@doctor_1.name)
       expect(page).to have_content(@doctor_1.specialty)
