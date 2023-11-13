@@ -32,7 +32,9 @@ RSpec.describe Patient, type: :feature do
       expect(page).to have_content("Denny Duquette")
       expect(page).to have_content("Rebecca Pope")
       expect(page).not_to have_content("Zola Shephard")
-      
+
+      expect(@patient1.name).to appear_before(@patient3.name)
+      expect(@patient2.name).to appear_before(@patient1.name)
     end
   end
 end

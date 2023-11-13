@@ -1,5 +1,5 @@
 class DoctorPatientsController < ApplicationController
-  def destroy 
+  def destroy
     doctor_patient = DoctorPatient.find_by(doctor_id: params[:doctor_id], patient_id: params[:patient_id])
 
     if doctor_patient
