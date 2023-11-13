@@ -5,7 +5,7 @@ RSpec.describe "hospital show" do
     @hospital = Hospital.create!(name: "Anschutz")
     @dr1 = @hospital.doctors.create!(name: "Dr. Ruth", specialty: "TBD", university: "Georgetown?")
     @dr2 = @hospital.doctors.create!(name: "Dr. John", specialty: "Forensic Pathology", university: "UC")
-    @dr3 = @hospital.doctors.create!(Name: "Meredith Grey", Specialty: "General Surgery", Education: "Harvard University")
+    @dr3 = @hospital.doctors.create!(name: "Meredith Grey", specialty: "General Surgery", university: "Harvard University")
     @deadperson1 = @dr2.patients.create!(name: "John Doe", age: 78)
     @deadperson2 = @dr2.patients.create!(name: "Jane Doe", age: 90)
     @otherpatient1 = Patient.create!(name: "JS Bach", age: 65)
@@ -18,12 +18,12 @@ RSpec.describe "hospital show" do
 
   describe "hospital_staff" do 
     it 'shows the hospitals name' do
-      visit "hospital/#{@hospital.id}"
-      expect(page).to have_content(@hospital1.name)
+      visit "hospitals/#{@hospital.id}"
+      expect(page).to have_content(@hospital.name)
     end
   
     it 'shows all the doctors and their patient load' do 
-      visit "hospital/#{@hospital.id}"
+      visit "hospitals/#{@hospital.id}"
       expect(page).to have_content(@dr1.name)
       expect(page).to have_content(@dr1.patients.count)
       expect(page).to have_content(@dr2.patients.count)

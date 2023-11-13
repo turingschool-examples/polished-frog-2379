@@ -1,0 +1,7 @@
+<h1><%= @hospital.name %></h1>
+
+
+<h3>Doctors</h3>
+  <% @doctors.each do |doctor| %>
+    <h4><%= doctor.name %> Patient Load: <%= doctor.patient_load %></h4>
+    <% end %>
