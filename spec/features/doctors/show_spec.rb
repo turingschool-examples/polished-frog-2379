@@ -4,7 +4,7 @@ RSpec.describe "doctor show", type: :feature do
   before(:each) do
     @hospital_1 = Hospital.create!(name: 'Grey Sloan')
 
-    @doctor_1 = Doctor.create!(name: 'Meredith Grey', specialty: 'Surgery', education: 'Harvard', hospital: @hospital_1)
+    @doctor_1 = Doctor.create!(name: 'Meredith Grey', specialty: 'Surgery', university: 'Harvard', hospital: @hospital_1)
 
     @patient_1 = Patient.create!(name: 'Katie', age: 24)
     @patient_2 = Patient.create!(name: 'Bryce', age: 32)
@@ -20,16 +20,18 @@ RSpec.describe "doctor show", type: :feature do
       expect(page).to have_content("Education: Harvard")
     end
 
-    xit 'They see name of hospital where the doctor works' do
+    it 'They see name of hospital where the doctor works' do
       expect(page).to have_content("Hospital: Grey Sloan")
     end
 
-    xit 'They see name of all patients form this doctor' do
+    it 'They see name of all patients form this doctor' do
       @doctor_1.patients << @patient_1
       @doctor_1.patients << @patient_2
 
+      visit "/doctors/#{@doctor_1.id}"
+      
       expect(page).to have_content("Patients: Katie Bryce")
-      expect(page).to have_content("Denny")
+      expect(page).to_not have_content("Denny")
     end
   end
 end
