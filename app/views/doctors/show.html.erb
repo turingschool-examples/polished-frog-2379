@@ -3,8 +3,8 @@
 <p>Specialty: <%= @doctor.specialty %></p>
 <p>Education: <%= @doctor.university %></p>
 <p>Hospital: <%= @doctor.hospital.name %></p>
-<p>Patients: 
-  <% @doctor.patients.each do |patient| %>
-    <%= patient.name %>
-  <% end %>
-</p>
+
+<h1>Patients</h1>
+<% @doctor.patients.each do |patient| %>
+  <p><%= patient.name %></p>
+<% end %>

@@ -1,19 +1,19 @@
 require "rails_helper"
 
 RSpec.describe "doctor show", type: :feature do
-  before(:each) do
-    @hospital_1 = Hospital.create!(name: 'Grey Sloan')
-
-    @doctor_1 = Doctor.create!(name: 'Meredith Grey', specialty: 'Surgery', university: 'Harvard', hospital: @hospital_1)
-
-    @patient_1 = Patient.create!(name: 'Katie', age: 24)
-    @patient_2 = Patient.create!(name: 'Bryce', age: 32)
-    @patient_3 = Patient.create!(name: 'Denny', age: 40)
-
-    visit "/doctors/#{@doctor_1.id}"
-  end
-
   describe 'When a user visits a doctor show page, they see information about the doctor' do
+    before(:each) do
+      @hospital_1 = Hospital.create!(name: 'Grey Sloan')
+  
+      @doctor_1 = Doctor.create!(name: 'Meredith Grey', specialty: 'Surgery', university: 'Harvard', hospital: @hospital_1)
+  
+      @patient_1 = Patient.create!(name: 'Katie', age: 24)
+      @patient_2 = Patient.create!(name: 'Bryce', age: 32)
+      @patient_3 = Patient.create!(name: 'Denny', age: 40)
+  
+      visit "/doctors/#{@doctor_1.id}"
+    end
+
     it 'They see doctors name, specialty, and university' do
       expect(page).to have_content("Name: Meredith Grey")
       expect(page).to have_content("Specialty: Surgery")
@@ -30,11 +30,30 @@ RSpec.describe "doctor show", type: :feature do
 
       visit "/doctors/#{@doctor_1.id}"
       
-      expect(page).to have_content("Patients: Katie Bryce")
+      expect(page).to have_content("Katie")
+      expect(page).to have_content("Bryce")
       expect(page).to_not have_content("Denny")
     end
   end
+
+  describe 'When a user visits doctor show page, they can remove a patient' do
+    xit 'returns' do
+      expect().to
+    end
+  end
+
 end
+
+# User Story 2, Remove a Patient from a Doctor
+# ​
+# As a visitor
+# When I visit a Doctor's show page
+# Then next to each patient's name, I see a button to remove that patient from that doctor's caseload
+# When I click that button for one patient
+# I'm brought back to the Doctor's show page
+# And I no longer see that patient's name listed
+# And when I visit a different doctor's show page that is caring for the same patient,
+# Then I see that the patient is still on the other doctor's caseload
 
 # User Story 1, Doctors Show Page
 # ​
