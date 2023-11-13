@@ -18,19 +18,19 @@ RSpec.describe 'Hospital Show Page /hospitals/:hospital_id' do
         expect(@doc2.name).to appear_before(@doc1.name)
         expect(@doc1.name).to appear_before(@doc4.name)
 
-        within("#doctor-#{doc1.id}") do
+        within("#doctor-#{@doc1.id}") do
           expect(page).to have_content("Number of patients: 2")
         end
         
-        within("#doctor-#{doc2.id}") do
+        within("#doctor-#{@doc2.id}") do
           expect(page).to have_content("Number of patients: 3")
         end
         
-        within("#doctor-#{doc3.id}") do
+        within("#doctor-#{@doc3.id}") do
           expect(page).to have_content("Number of patients: 4")
         end
         
-        within("#doctor-#{doc4.id}") do
+        within("#doctor-#{@doc4.id}") do
           expect(page).to have_content("Number of patients: 1")
         end
       end
