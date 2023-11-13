@@ -55,12 +55,13 @@ RSpec.describe Doctor, type: :feature do
       expect(page).to have_content("Patient 1")
       visit "/doctors/#{@doctor1.id}"
       expect(page).to have_content("Patient 1")
-      click_button("Remove Patient from Doctor 1")
+      click_button("Remove Patient 1 from Doctor 1")
       expect(current_path).to eq("/doctors/#{@doctor1.id}")
       expect(page).to_not have_content("Patient 1")
       visit "/doctors/#{@doctor4.id}"
       expect(page).to have_content("Patient 1")
-      click_button("Remove Patient from Doctor 1")
+      click_button("Remove Patient 1 from Doctor 4")
+      expect(current_path).to eq("/doctors/#{@doctor4.id}")
       expect(page).to_not have_content("Patient 1")
 
     end
