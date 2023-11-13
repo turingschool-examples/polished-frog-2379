@@ -1,12 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Patient do
-  describe "associations" do
-    it {should have_many :doctors}
-    it {should have_many(:doctors).through(:patient_doctors)}
-    it {should have_many(:hospitals).through(:doctors)}
-  end
-
+RSpec.describe Patient, type: :feature do
   before :each do
     @hospital1 = Hospital.create!(name: "UC")
     @hospital2 = Hospital.create!(name: "UTMB")
@@ -20,11 +14,27 @@ RSpec.describe Patient do
     @patient4 = @doctor1.patients.create!(name: "rPatient 4", age: 40)
     @patient5 = @doctor2.patients.create!(name: "mPatient 5", age: 18)
     @patient6 = @doctor3.patients.create!(name: "aPatient 6", age: 70)
+    @doctor4.patients << @patient1
+    @doctor4.patients << @patient2
   end
 
-  describe "class methods" do
-    it "#alphebetized adults" do
-      expect(Patient.alphebetized_adults).to eq([@patient6, @patient2, @patient3, @patient4])
+  describe "As a visitor when I visit the patient index page" do
+    it "I see the names of all adult patients (age is greater than 18)" do
+      visit "/patients"
+      expect(page).to have_content("cPatient 2")
+      expect(page).to have_content("kPatient 3")
+      expect(page).to have_content("rPatient 4")
+      expect(page).to have_content("aPatient 6")
+      expect(page).to_not have_content("bPatient 1")
+      expect(page).to_not have_content("mPatient 5")
+
+    end
+
+    it "And I see the names are in ascending alphabetical order (A - Z, you do not need to account for capitalization)" do
+      visit "/patients"
+      expect("aPatient 6").to appear_before("cPatient 2")
+      expect("cPatient 2").to appear_before("kPatient 3")
+      expect("kPatient 3").to appear_before("rPatient 4")
     end
   end
 end
