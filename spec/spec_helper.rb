@@ -19,11 +19,13 @@ def test_data
   @patient3 = Patient.create!(name: "Devon Gomez", age: 12)
   @patient4 = Patient.create!(name: "Clara Green", age: 30)
   @patient5 = Patient.create!(name: "Warren Griffith", age: 52)
+  @patient6 = Patient.create!(name: "Amanda Lane", age: 43)
 
   DoctorPatient.create!(doctor: @meredith, patient: @patient1)
   DoctorPatient.create!(doctor: @meredith, patient: @patient2)
   DoctorPatient.create!(doctor: @meredith, patient: @patient3)
   DoctorPatient.create!(doctor: @meredith, patient: @patient4)
+  DoctorPatient.create!(doctor: @meredith, patient: @patient6)
 
   DoctorPatient.create!(doctor: @mark, patient: @patient1)
   DoctorPatient.create!(doctor: @mark, patient: @patient2)
