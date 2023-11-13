@@ -35,7 +35,7 @@ RSpec.describe 'the hospital show page' do
 
     it "should have the hospital's doctor's numbers of patients" do
       visit hospital_path(@grace)
-      save_and_open_page
+
       within "#doctor-#{@doctor_1.id}" do
         expect(page).to have_content("Number of Patients: 4")
       end
