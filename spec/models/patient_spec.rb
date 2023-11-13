@@ -10,14 +10,6 @@ RSpec.describe Patient do
     lucas = Patient.create!(name: "Lucas Kleeman", age: 17)
     blake = Patient.create!(name: "Blake S", age: 32)
 
-    expect(Patient.alphabetical).to eq([blake, casey, joel, lucas])
-  end
-
-  it "has age requirement to be an adult" do 
-    lucas = Patient.create!(name: "Lucas Kleeman", age: 17)
-    blake = Patient.create!(name: "Blake S", age: 32)
-
-    expect(lucas.adult?).to eq(false)
-    expect(blake.adult?).to eq(true)
+    expect(Patient.alphabetical_adult).to eq([blake, casey, joel])
   end
 end

@@ -5,15 +5,8 @@ class Patient < ApplicationRecord
   validates :name, presence: true 
   validates :age, presence: true, numericality: true  
 
-  def self.alphabetical
-    all.order('name ASC') 
-  end
-
-  def adult?
-    if age >= 18 
-      true
-    else
-      false 
-    end 
+  def self.alphabetical_adult
+    all.order('name ASC')
+    .where('age >= 18') 
   end
 end
