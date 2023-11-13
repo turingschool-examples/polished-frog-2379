@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Patient Index" do
+RSpec.describe "Hospital Show" do
   before(:each) do
     @hospital1 = Hospital.create(name: "U of U Hospital")
     @hospital2 = Hospital.create(name: "Central Piedmont Hospital")
@@ -26,22 +26,7 @@ RSpec.describe "Patient Index" do
     @doctor2.patients << @patient3
   end
 
-  it "Show patients in alphabetical order if they're over 18" do
-    visit patients_path
+  xit "Show doctors at hospital - ordered by doctor patient count" do
 
-    expect(page).to have_content(@patient1.name)
-    expect(page).to have_content(@patient2.name)
-    expect(page).to have_content(@patient3.name)
-    expect(page).to have_content(@patient4.name)
-    expect(page).to have_content(@patient5.name)
-    expect(page).to have_content(@patient6.name)
-    expect(page).to_not have_content(@patient7.name)
-    expect(page).to_not have_content(@patient8.name)
-
-    expect(@patient1.name).to appear_before(@patient3.name)
-    expect(@patient3.name).to appear_before(@patient6.name)
-    expect(@patient6.name).to appear_before(@patient4.name)
-    expect(@patient4.name).to appear_before(@patient2.name)
-    expect(@patient2.name).to appear_before(@patient5.name)
   end
 end
