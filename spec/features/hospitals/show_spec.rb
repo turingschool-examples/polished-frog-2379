@@ -9,7 +9,7 @@ RSpec.describe "hospital show", type: :feature do
       @doctor_1 = Doctor.create!(name: 'Meredith Grey', specialty: 'Surgery', university: 'Harvard', hospital: @hospital_1)
       @doctor_2 = Doctor.create!(name: 'Sam', specialty: 'Surgery', university: 'Somewhere', hospital: @hospital_1)
       @doctor_3 = Doctor.create!(name: 'Someone', specialty: 'Surgery', university: 'Elsewhere', hospital: @hospital_1)
-      @doctor_3 = Doctor.create!(name: 'Bob', specialty: 'Surgery', university: 'Elsewhere', hospital: @hospital_2)
+      @doctor_4 = Doctor.create!(name: 'Bob', specialty: 'Surgery', university: 'Elsewhere', hospital: @hospital_2)
   
       @patient_1 = Patient.create!(name: 'Katie', age: 18)
       @patient_2 = Patient.create!(name: 'Denny', age: 19)
@@ -46,15 +46,15 @@ RSpec.describe "hospital show", type: :feature do
 
     it 'They see number of patients associated with the doctor' do
       within "#doctor-#{@doctor_1.id}" do
-        expect(page).to have_content('Meredith Grey: 4 patients')
+        expect(page).to have_content('Meredith Grey : 4 patients')
       end
 
       within "#doctor-#{@doctor_2.id}" do
-        expect(page).to have_content('Sam: 6 patients')
+        expect(page).to have_content('Sam : 6 patients')
       end
 
       within "#doctor-#{@doctor_3.id}" do
-        expect(page).to have_content('Someone: 2 patients')
+        expect(page).to have_content('Someone : 2 patients')
       end
     end
 
