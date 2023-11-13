@@ -23,7 +23,29 @@ RSpec.describe "Doctor Show Page" do
         expect(page).to have_content(p.name)
       end
     end
-    
+
+    describe '#USER STORY 2: REMOVE A PATIENT FROM A DOCTOR' do
+      it 'each patient has a remove button' do
+        patient_count = @meredith.patients.count
+        expect(page).to have_link("Remove", count: patient_count)
+      end
+      
+      it 'when clicking the remove button beside a patient, the patient is removed from the show page' do
+        within("#patient-#{@patient1.id}") do
+          click_link "Remove"
+        end
+        expect(current_path).to eq(doctor_path(@meredith))
+        expect(page).to_not have_content(@patient1.name)
+      end
+
+      it 'checking another doctor show page, the patient is still listed' do
+        within("#patient-#{@patient1.id}") do
+          click_link "Remove"
+        end
+        visit doctor_path(@mark)
+        expect(page).to have_content(@patient1.name)
+      end
+    end
   end
 
 end
