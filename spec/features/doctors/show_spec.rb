@@ -46,7 +46,23 @@ RSpec.describe "Doctors Show Page", type: :feature do
         describe "When I click that button for one patient I'm brought back to the doctors show page" do
           describe "And I no longer see that patient listed" do
             it "when I visit a different doctors show page caring for the same patient, I still see that patient on their caseload" do
-              
+
+              visit "/doctors/#{@doctor1.id}"
+
+              expect(page).to have_content(@patient1.name)
+              expect(page).to have_content(@patient2.name)
+
+              expect(page).to have_button("Remove this patient")
+
+              click_button("Remove this patient")
+
+              expect(current_path).to eq("/doctors/#{@doctor1.id}")
+
+              expect(page).to_not have_content(@patient1.name)
+
+              visit "/doctors/#{@doctor2.id}"
+
+              expect(page).to have_content(@patient1.name)
             end
           end
         end
