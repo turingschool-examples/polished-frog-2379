@@ -21,6 +21,7 @@ RSpec.describe "doctor show" do
   
   it 'should show the name of the hospital and patients' do
     visit "/doctors/#{@dr2.id}"
+    save_and_open_page
     expect(page).to have_content(@hospital.name)
     expect(page).to have_content(@deadperson1.name)
     expect(page).to have_content(@deadperson2.name)
