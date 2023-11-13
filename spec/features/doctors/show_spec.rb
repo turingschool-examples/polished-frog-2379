@@ -13,8 +13,8 @@ RSpec.describe 'Doctors Show Page /doctors/:doctor_id' do
         
         expect(page).to have_content("Doctor's Information")
         expect(page).to have_content("Doctor's Name: #{@doc1.name}")
-        expect(page).to have_content("Doctor's Name: #{@doc1.specialty}")
-        expect(page).to have_content("Doctor's Name: #{@doc1.university}")
+        expect(page).to have_content("Doctor's Specialty: #{@doc1.specialty}")
+        expect(page).to have_content("University Attended: #{@doc1.university}")
       end
 
       it 'shows the name of the hospital they work and list of patients' do
@@ -23,6 +23,7 @@ RSpec.describe 'Doctors Show Page /doctors/:doctor_id' do
 
         expect(page).to have_content("Hospital Name: Grey Sloan Memorial Hospital")
         expect(page).to have_content("List of Patients:\n#{@patient1.name}\n#{@patient4.name}")
+        save_and_open_page
       end
     end
   end
