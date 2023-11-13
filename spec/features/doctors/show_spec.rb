@@ -13,6 +13,7 @@ RSpec.describe "Doctors Show Page", type: :feature do
     @patient3 = Patient.create!(name: "Rebecca Pope", age: 32)
 
     PatientDoctor.create!(patient_id: @patient1.id, doctor_id: @doctor1.id)
+    PatientDoctor.create!(patient_id: @patient1.id, doctor_id: @doctor2.id)
     PatientDoctor.create!(patient_id: @patient2.id, doctor_id: @doctor1.id)
     PatientDoctor.create!(patient_id: @patient3.id, doctor_id: @doctor2.id)
   end
@@ -37,7 +38,17 @@ RSpec.describe "Doctors Show Page", type: :feature do
           expect(page).to_not have_content(@doctor2.name)
           expect(page).to_not have_content(@patient3.name)
           expect(page).to_not have_content(@hospital2.name)
-          save_and_open_page
+        end
+      end
+
+      #US2
+      describe "Next to each patient's name, I see a button to remove that patient from that doctors caseload" do
+        describe "When I click that button for one patient I'm brought back to the doctors show page" do
+          describe "And I no longer see that patient listed" do
+            it "when I visit a different doctors show page caring for the same patient, I still see that patient on their caseload" do
+              
+            end
+          end
         end
       end
     end
