@@ -23,8 +23,6 @@ RSpec.describe "Patients Index" do
     it "I see the names of all adult patients in ascending alphabetical order" do
       visit "/patients"
 
-      save_and_open_page
-
       within "#patients" do
         expect(page).to have_no_content(@patient_1.name)
         expect(page).to have_no_content(@patient_2.name)
