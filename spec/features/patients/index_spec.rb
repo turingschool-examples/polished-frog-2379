@@ -21,7 +21,6 @@ RSpec.describe 'patient index' do
     expect(page).to have_content(@p6.name)
     expect(page).to have_content(@p7.name)
     expect(page).to have_content(@p8.name)
-    save_and_open_page
   end
 
   it 'lists the names from A-Z' do
