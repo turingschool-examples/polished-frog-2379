@@ -7,8 +7,9 @@
 <p><b>Hospital Name:</b> <%= @doctor.hospital.name %></p>
 <p><b>List of Patients:</b> <% @doctor.patients.each do |patient| %></p>
   <div id="patient-<%= patient.id %>">
-    <p><%= patient.name %> 
-    <%= button_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
-    </p>
+    <div class ="button-container">
+      <%= patient.name %> 
+      <%= button_to "Remove Patient", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
+    </div><br>
   </div>
 <% end %>

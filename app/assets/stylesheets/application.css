@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+.button-container {
+  white-space: nowrap; 
+  /* Prevent line breaks */
+}
+
+.button-container form {
+  display: inline-block; 
+  /* Display the forms horizontally */
+  margin-right: 4px; 
+  /* Add some spacing between the buttons */
+}

@@ -10,7 +10,7 @@ RSpec.describe Patient do
 
   describe 'adult_patients' do
     it 'shows the list of adult(age>18) patients in alphabetical order' do
-      expect(Patient.adult_patients).to eq([@patient5.name, @patient2.name, @patient1.name, @patient3.name])
+      expect(Patient.adult_patients.to_sentence).to eq("#{@patient5.name}, #{@patient2.name}, #{@patient1.name}, and #{@patient3.name}")
     end
   end
 end
