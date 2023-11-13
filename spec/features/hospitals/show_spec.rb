@@ -11,7 +11,7 @@ RSpec.describe Patient, type: :feature do
     @doctor5 = @hospital2.doctors.create!(name: "Doctor 5", specialty: "Ortho", university: "OSU")
     @patient1 = @doctor1.patients.create!(name: "bPatient 1", age: 10)
     @patient2 = @doctor1.patients.create!(name: "cPatient 2", age: 20)
-    @patient3 = @doctor2.patients.create!(name: "kPatient 3", age: 50)
+    @patient3 = @doctor3.patients.create!(name: "kPatient 3", age: 50)
     @patient4 = @doctor1.patients.create!(name: "rPatient 4", age: 40)
     @patient5 = @doctor2.patients.create!(name: "mPatient 5", age: 18)
     @patient6 = @doctor3.patients.create!(name: "aPatient 6", age: 70)

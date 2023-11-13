@@ -1,0 +1,6 @@
+<h2><%= "Hospital Name: #{@hospital.name}" %></h2>
+
+<h4>Employed Doctors and Patient Load</h4>
+<% @hospital.doctors_by_patient_load.each do |doctor| %>
+  <%= doctor.patient_count_formatted %> <br>
+<% end  %>
