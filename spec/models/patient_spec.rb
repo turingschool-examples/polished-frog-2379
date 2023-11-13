@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Patient do
-  it {should have_many(:doctors).through(:doctor_patients) }
-  it {should have_many :doctor_patients}
+  describe "relationships" do
+    it { should have_many(:doctors).through(:doctor_patients) }
+    it { should have_many :doctor_patients }
+  end
 
   describe "#methods" do
     before :each do
