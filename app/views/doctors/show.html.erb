@@ -5,5 +5,8 @@
 
 <h3>Patients</h3>
 <% @doc.patients.each do | patient | %>
-    <%= patient.name %>
+  <div id="patient-<%= patient.id %>" style="display: inline-block">
+    <p><%= patient.name %></p>
+    <p><%= button_to "Remove", doctor_patient_path(@doc, patient), method: :delete %></p>
+  </div>
 <% end %>
