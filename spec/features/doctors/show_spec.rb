@@ -23,7 +23,23 @@ RSpec.describe 'Doctors Show Page /doctors/:doctor_id' do
 
         expect(page).to have_content("Hospital Name: Grey Sloan Memorial Hospital")
         expect(page).to have_content("List of Patients:\n#{@patient1.name}\n#{@patient4.name}")
-        save_and_open_page
+      end
+
+      it 'has a button to remove patient from this doctor only, once removed, reroutes to the show page' do
+        #US 2
+        visit "/doctors/#{@doc1.id}"
+
+        within("#patient-#{@patient4.id}") do
+          expect(page).to have_content("#{@patient4.name}")
+          expect(page).to have_button("Remove Patient")
+          click_button("Remove Patient")
+        end
+
+        expect(current_path).to eq("/doctors/#{@doc1.id}")
+        expect(page).to_not have_content("#{@patient4.name}")
+
+        visit "/doctors/#{@doc2.id}"
+        expect(page).to have_content("#{@patient4.name}")
       end
     end
   end
