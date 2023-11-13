@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       resources :patients, only: [:destroy], controller: "doctor_patients"
     end
   end
+
+  resources :patients, only: [:index], controller: "patients"
 end
