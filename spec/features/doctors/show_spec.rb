@@ -37,6 +37,7 @@ RSpec.describe "Doctors Show Page", type: :feature do
           expect(page).to_not have_content(@doctor2.name)
           expect(page).to_not have_content(@patient3.name)
           expect(page).to_not have_content(@hospital2.name)
+          save_and_open_page
         end
       end
     end
