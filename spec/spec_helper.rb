@@ -25,6 +25,10 @@ def test_data
   DoctorPatient.create!(doctor: @meredith, patient: @patient3)
   DoctorPatient.create!(doctor: @meredith, patient: @patient4)
 
+  DoctorPatient.create!(doctor: @mark, patient: @patient1)
+  DoctorPatient.create!(doctor: @mark, patient: @patient2)
+  DoctorPatient.create!(doctor: @mark, patient: @patient5)
+
 end
 
 #
