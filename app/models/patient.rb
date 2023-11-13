@@ -3,7 +3,9 @@ class Patient < ApplicationRecord
   has_many :doctors, through: :doctor_patients
 
   def self.sorted_patients
-    Patient.distinct.where("age >= 18").order(name: :ASC)
+    Patient.distinct
+           .where("age >= 18")
+           .order(name: :ASC)
   end
 
 end

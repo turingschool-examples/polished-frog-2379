@@ -4,7 +4,9 @@ class Doctor < ApplicationRecord
   has_many :patients, through: :doctor_patients
 
   def self.alphabetical
-    Doctor.all.distinct.order(name: :ASC)
+    Doctor.all
+          .distinct
+          .order(name: :ASC)
   end
 
   def patient_count
