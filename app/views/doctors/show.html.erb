@@ -12,11 +12,11 @@
 
 <body>
 <h2><u><%= "Dr. #{@doctor.name}" %></u></h2>
-<p><u>Speciality</u>: <%= @doctor.specialty %></p>
-<p><u>University</u>: <%= @doctor.university %></p>
-<p><u>Hospital</u>: <%= @doctor.hospital.name %></p>
+<p><u><strong>Speciality</strong></u>: <%= @doctor.specialty %></p>
+<p><u><strong>University</strong></u>: <%= @doctor.university %></p>
+<p><u><strong>Hospital</strong></u>: <%= @doctor.hospital.name %></p><br>
 
-<p><u>List of Patients</u>:</p>
+<p><u><strong>List of Patients</strong></u></p>
 <% @doctor.patients.each do |patient| %>
   <section id="patient-<%= patient.id %>">
       <div class="remove-button">
