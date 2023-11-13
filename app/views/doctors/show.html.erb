@@ -1,3 +1,16 @@
+<html>
+<head>
+    <style>
+        .remove-button {
+            display: flex;
+        }
+        .button-left-margin {
+          margin-left: 10px
+        }
+    </style>
+</head>
+
+<body>
 <h2><u><%= "Dr. #{@doctor.name}" %></u></h2>
 <p><u>Speciality</u>: <%= @doctor.specialty %></p>
 <p><u>University</u>: <%= @doctor.university %></p>
@@ -5,10 +18,13 @@
 
 <p><u>List of Patients</u>:</p>
 <% @doctor.patients.each do |patient| %>
-  <section id="patient-<%=patient.id%>">
-    <li>
-      <%= patient.name %>
-      <%= button_to "Remove", "/doctors/#{@doctor.id}/doctor_patients/#{patient.id}", method: :delete %>
-    </li>
+  <section id="patient-<%= patient.id %>">
+      <div class="remove-button">
+        <%= patient.name %>
+      <div class="button-left-margin">
+        <%= button_to "Remove", "/doctors/#{@doctor.id}/doctor_patients/#{patient.id}", method: :delete %>
+      </div>
+      </div>
   </section>
 <% end %>
+</body>
