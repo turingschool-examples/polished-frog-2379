@@ -12,5 +12,6 @@
 DoctorPatient.create!(doctor: @doctor1, patient: @patient1)
 DoctorPatient.create!(doctor: @doctor1, patient: @patient2)
 DoctorPatient.create!(doctor: @doctor2, patient: @patient3)
+DoctorPatient.create!(doctor: @doctor2, patient: @patient1)
+DoctorPatient.create!(doctor: @doctor2, patient: @patient4)
 DoctorPatient.create!(doctor: @doctor3, patient: @patient4)
-DoctorPatient.create!(doctor: @doctor1, patient: @patient4)
