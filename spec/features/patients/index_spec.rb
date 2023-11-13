@@ -10,9 +10,9 @@ RSpec.describe "Patient Index" do
     visit "/patients"
   end
 
-  it "lists all patients in alphabetical age" do 
+  it "lists all patients in alphabetical, and only over 18 year old" do 
     expect(@blake.name).to appear_before(@casey.name)
     expect(@casey.name).to appear_before(@joel.name)
-    expect(@joel.name).to appear_before(@lucas.name)
+    expect(page).to_not have_content(@lucas.name)
   end
 end

@@ -2,5 +2,7 @@
 
   <h2> Adult Patients </h2>
   <p> <% @patients.each do |patient| %></p>
-  <%= patient.name %>
+    <% if patient.age >= 18 %>
+      <%= patient.name %>
+    <% end %>
   <% end %>
