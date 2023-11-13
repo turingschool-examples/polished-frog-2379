@@ -14,14 +14,17 @@ RSpec.describe "Doctor Show" do
     @patient4 = Patient.create(name: "Maddie", age: 29)
     @patient5 = Patient.create(name: "Shayne", age: 25)
     @patient6 = Patient.create(name: "Johnny", age: 27)
-  end
 
-  it "I see - Doctor info - Hospital - related patients" do
-    # require 'pry'; binding.pry
     @doctor1.patients << @patient1
     @doctor1.patients << @patient2
     @doctor1.patients << @patient3
 
+    @doctor2.patients << @patient1
+    @doctor2.patients << @patient2
+    @doctor2.patients << @patient3
+  end
+
+  it "I see - Doctor info - Hospital - related patients" do
     visit "/doctors/#{@doctor1.id}"
 
     expect(page).to have_content("#{@doctor1.name}")
@@ -31,5 +34,22 @@ RSpec.describe "Doctor Show" do
     expect(page).to have_content("#{@patient1.name}")
     expect(page).to have_content("#{@patient2.name}")
     expect(page).to have_content("#{@patient3.name}")
+  end
+
+  it "has a buttton to remove patient from doctor" do 
+    visit "/doctors/#{@doctor1.id}"
+
+    expect(page).to have_content("#{@patient1.name}")
+
+    expect(page).to have_button("Remove #{@patient1.name}")
+    click_button("Remove #{@patient1.name}")
+
+    expect(current_path).to eq("/doctors/#{@doctor1.id}")
+
+    expect(page).to_not have_content("#{@patient1.name}")
+
+    visit "/doctors/#{@doctor2.id}"
+
+    expect(page).to have_content(@patient1.name)
   end
 end

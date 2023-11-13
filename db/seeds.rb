@@ -17,3 +17,11 @@
 @patient4 = Patient.create(name: "Maddie", age: 29)
 @patient5 = Patient.create(name: "Shayne", age: 25)
 @patient6 = Patient.create(name: "Johnny", age: 27)
+
+@doctor1.patients << @patient1
+@doctor1.patients << @patient2
+@doctor1.patients << @patient3
+
+@doctor2.patients << @patient1
+@doctor2.patients << @patient2
+@doctor2.patients << @patient3
