@@ -20,6 +20,7 @@ RSpec.describe "patient index", type: :feature do
       @doctor_1.patients << @patient_2
       @doctor_1.patients << @patient_3
       @doctor_1.patients << @patient_4
+
       @doctor_2.patients << @patient_3
       @doctor_2.patients << @patient_4
       @doctor_2.patients << @patient_5
@@ -33,8 +34,8 @@ RSpec.describe "patient index", type: :feature do
 
       expect(page).to have_content('Abby', count: 2)
       expect(page).to have_content('Denny')
-      expect(page).to have_content('Bryce T')
-      expect(page).to have_content('Bryce B')
+      expect(page).to have_content('Bryce T', count: 1)
+      expect(page).to have_content('Bryce B', count: 1)
     end
 
     it 'They see patients in alphabetical order' do
