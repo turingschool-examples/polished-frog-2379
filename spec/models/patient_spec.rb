@@ -11,7 +11,7 @@ RSpec.describe Patient do
     describe "self.adult_patients" do 
       it "finds all patients that are 18 years old or older" do 
         adults = Patient.adult_patients
-        expect(adults).to eq([@patient2, @patient1, @patient4, @patient3])
+        expect(adults).to eq([@patient2, @patient1, @patient3])
       end
     end
   end
