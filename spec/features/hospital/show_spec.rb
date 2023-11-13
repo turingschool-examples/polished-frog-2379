@@ -36,10 +36,8 @@ RSpec.describe "hospital show" do
 
     it 'lists the doctors by amount of patients, most to least' do
       visit "hospitals/#{@hospital.id}"
-      save_and_open_page
       expect(@dr2.name).to appear_before(@dr1.name)
       expect(@dr1.name).to appear_before(@dr3.name)
-
     end
   end
 end
