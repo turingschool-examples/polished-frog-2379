@@ -31,15 +31,17 @@ RSpec.describe "the Doctors show page" do
   end
 
   it "should have a button to remove the patient from the doctor's workload and the other doctor still has the patient" do
-    expect(page).to have_button("Remove #{@patient1.name}")
-    click_on("Remove #{@patient1.name}")
-    expect(current_path).to eq("/doctors/#{@doctor1.id}")
+    within("#patient-#{@patient1.id}") do
+      expect(page).to have_button("Remove")
+      click_on("Remove")
+      expect(current_path).to eq("/doctors/#{@doctor1.id}")
+    end
 
-    expect(page).to_not have_content("#{@patient1.name}")
-    expect(@doctor1.patients).to eq([@patient2, @patient4])
-
-    visit doctor_path(@doctor2)
-    expect(page).to have_content(@patient1.name)
-    expect(@doctor2.patients).to eq([@patient1])
+      expect(page).to_not have_content("#{@patient1.name}")
+      expect(@doctor1.patients).to eq([@patient2, @patient4])
+      
+      visit doctor_path(@doctor2)
+      expect(page).to have_content(@patient1.name)
+      expect(@doctor2.patients).to eq([@patient1])
   end
 end
