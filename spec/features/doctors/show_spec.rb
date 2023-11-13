@@ -49,8 +49,6 @@ RSpec.describe "Doctors Show" do
 
         click_button("Remove #{@patient_2.name} from caseload")
 
-        save_and_open_page
-
         expect(current_path).to eq("/doctors/#{@doctor_1.id}")
 
         within "#doctors-patients" do
