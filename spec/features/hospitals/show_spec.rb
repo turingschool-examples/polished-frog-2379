@@ -45,17 +45,17 @@ RSpec.describe "doctors#show" do
         expect(page).to have_content("#{@hospital1.name}'s Show Page")
 
         within("#doctor-#{@doctor1.id}_info") do
-          expect(page).to have_content(@doctor1.name)
+          expect(page).to have_content("Doctor: #{@doctor1.name}")
           expect(page).to have_content("Number of Patients: 4")
         end
 
         within("#doctor-#{@doctor2.id}_info") do
-          expect(page).to have_content(@doctor2.name)
+          expect(page).to have_content("Doctor: #{@doctor2.name}")
           expect(page).to have_content("Number of Patients: 3")
         end
 
         expect(@doctor1.name).to appear_before(@doctor2.name)
-save_and_open_page
+
       end
     end
   end

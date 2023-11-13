@@ -11,10 +11,14 @@ RSpec.describe "doctors#show" do
     @patient2 = Patient.create!(name: "Rizzo", age: 45 )
     @patient3 = Patient.create!(name: "Gonzo", age: 50 )
     @patient4 = Patient.create!(name: "Scooter", age: 35 )
+    
+    @patient5 = Patient.create!(name: "Robin the Frog", age: 16 )
 
     @doc_pat1 = DoctorPatient.create!(doctor: @doctor1, patient: @patient1)
     @doc_pat2 = DoctorPatient.create!(doctor: @doctor1, patient: @patient2)
     @doc_pat3 = DoctorPatient.create!(doctor: @doctor1, patient: @patient3)
+
+    @doc_pat7 = DoctorPatient.create!(doctor: @doctor1, patient: @patient5)
 
     @doc_pat4 = DoctorPatient.create!(doctor: @doctor2, patient: @patient2)
     @doc_pat5 = DoctorPatient.create!(doctor: @doctor2, patient: @patient3)

@@ -2,7 +2,7 @@
 
 <% @hospital.doctor_pat_sort.each do |doctor| %>
   <section id="doctor-<%= doctor.id%>_info">
-    <p>Doctor:<%= doctor.name %></p>
+    <p>Doctor: <%= doctor.name %></p>
     <li>Number of Patients: <%= doctor.pat_count %></li>
   </section>
 <% end %>
