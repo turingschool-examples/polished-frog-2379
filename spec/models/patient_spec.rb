@@ -1,6 +1,17 @@
 require "rails_helper"
 
-RSpec.describe "Patient" do 
+RSpec.describe Patient do 
+
+  describe "relationships" do
+    it { should have_many :patient_doctors}
+    it { should have_many(:doctors).through(:patient_doctors) }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :age }
+  end
+  
   before(:each) do 
     @patient0 = Patient.create!({name: "Patient Zero", age: 26})
     @patient1 = Patient.create!({name: "Patient One", age: 39})
