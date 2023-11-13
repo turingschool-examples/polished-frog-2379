@@ -1,0 +1,5 @@
+<h1><%= "Patient Index" %></h1>
+<% @patient.adult_patients.order_by_name.each do |patient| %><br>
+  <%= patient.name %>
+<% end %>
+

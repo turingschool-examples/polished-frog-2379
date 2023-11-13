@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Patient Show Page", type: :feature do
+RSpec.describe "Patient Index Page", type: :feature do
   before :each do
     @hospital1 = Hospital.create!(name: "Grey Sloan Memorial Hospital")
     @hospital2 = Hospital.create!(name: "Seaside Health & Wellness Center")
@@ -26,7 +26,7 @@ RSpec.describe "Patient Show Page", type: :feature do
         it "I see the names are in ascending alphabetical order (A - Z, you do not need to account for capitalization)" do
           
           visit "/patients"
-
+          
           expect(@patient2.name).to appear_before(@patient1.name)
           expect(@patient1.name).to appear_before(@patient3.name)
           expect(page).to_not have_content(@patient4.name)
