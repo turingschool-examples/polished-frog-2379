@@ -2,9 +2,11 @@
 
 <h3>Doctors:</h3>
 <ul>
-  <% @hospital.doctors.each do |d| %>
+  <% @doctors.each do |d| %>
     <div id="doctor-<%= d.id %>">
-      <li><%= d.name %></li>
+      <li><b><%= d.name %></b><br>
+        Patients Seen: <%= d.patient_count %>
+      </li>
     </div>
     <br>
   <% end %>
