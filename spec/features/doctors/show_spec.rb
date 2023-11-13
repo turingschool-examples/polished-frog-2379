@@ -18,14 +18,15 @@ RSpec.describe "Doctor Show Page" do
     end
 
     it 'has all of the patients that belong to this doctor' do
-      patients = @meredith.patients
-      patients.each do |p|
-        expect(page).to have_content(p.name)
-      end
+      expect(page).to have_content(@patient1.name)
+      expect(page).to have_content(@patient2.name)
+      expect(page).to have_content(@patient3.name)
+      expect(page).to have_content(@patient4.name)
+      expect(page).to have_content(@patient6.name)
     end
 
     describe '#USER STORY 2: REMOVE A PATIENT FROM A DOCTOR' do
-      it 'each patient has a remove button' do
+    it 'each patient has a remove button' do
         patient_count = @meredith.patients.count
         expect(page).to have_button("Remove", count: patient_count)
       end

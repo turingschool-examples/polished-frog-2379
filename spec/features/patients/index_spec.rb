@@ -9,9 +9,10 @@ RSpec.describe "Patient Index Page" do
 
   describe 'USER STORY 3: PATIENT INDEX' do
     it 'when visiting the index, displays only the adult patients (age greater than 18)' do
-      @patients.each do |p|
-        expect(page).to have_content(p.name)
-      end
+      expect(page).to have_content(@patient1.name)
+      expect(page).to have_content(@patient4.name)
+      expect(page).to have_content(@patient5.name)
+      expect(page).to have_content(@patient6.name)
       expect(page).to_not have_content(@patient2.name)
       expect(page).to_not have_content(@patient3.name)
     end
