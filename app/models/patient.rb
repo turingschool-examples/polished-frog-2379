@@ -5,6 +5,8 @@ class Patient < ApplicationRecord
   def over_eighteen
     if self.age >= 18
       return true
+    else
+      return false
     end
   end
 
