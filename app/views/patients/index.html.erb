@@ -1,5 +1,4 @@
 <h1>All Patients in the System</h1>
-  <% require 'pry'; binding.pry %>
 <ol><% Patient.alphabetize_by_name.each do |p| %>
   <% if p.over_eighteen == true%>
     <p><%= p.name %> - Age: <%= p.age %></p>

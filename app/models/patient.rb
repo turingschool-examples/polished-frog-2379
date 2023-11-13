@@ -9,13 +9,6 @@ class Patient < ApplicationRecord
   end
 
   def self.alphabetize_by_name
-    order(:name)
-    # names = self.name.split(" ")
-    # if names.length == 2
-    #   last_name_first = "#{names[1]}, #{names[0]}"
-    #   puts last_name_first
-    # else
-    #   puts "Invalid Name Format: Names Must Consist of a First and Last Name Only"
-    # end
+    Patient.all.order(name: :asc)
   end
 end

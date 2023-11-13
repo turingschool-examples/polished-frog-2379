@@ -17,6 +17,8 @@
 @patient2 = Patient.create(name: "Denny Duquette", age: 39)
 @patient3 = Patient.create(name: "Rebecca Pope", age: 32)
 @patient4 = Patient.create(name: "Zola Shepherd", age: 2)
+@patient5 = Patient.create(name: "Zroof Zurlack", age: 22)
+@patient6 = Patient.create(name: "Eisenhower Burtriss", age: 80)
 
 @doctor_patient1 = DoctorPatient.create(doctor_id: @doctor1.id, patient_id: @patient1.id)
 @doctor_patient1 = DoctorPatient.create(doctor_id: @doctor3.id, patient_id: @patient1.id)
