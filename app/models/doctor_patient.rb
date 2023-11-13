@@ -1,4 +1,4 @@
 class DoctorPatient < ApplicationRecord
-  belongs_to :doctor
-  belongs_to :patient
+  belongs_to :doctor, dependent: :destroy
+  belongs_to :patient, dependent: :destroy
 end

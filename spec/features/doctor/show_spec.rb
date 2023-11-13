@@ -68,12 +68,10 @@ RSpec.describe Doctor, type: :feature do
       Then I see that the patient is still on the other doctors caseload' do
 
       visit "/doctors/#{@doctor1.id}"
-
       expect(page).to have_content("Remove #{@patient1.name}")
       click_button "Remove #{@patient1.name}"
       expect(current_path).to eq("/doctors/#{@doctor1.id}")
       expect(page).to_not have_content("Katie Bryce")
-
       visit "/doctors/#{@doctor2.id}"
       expect(page).to have_content("Katie Bryce")
 
