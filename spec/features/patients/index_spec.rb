@@ -5,7 +5,7 @@ RSpec.describe 'the patients index page' do
     @grace = Hospital.create!(name: "Grace Memorial")
     @doctor_1 = @grace.doctors.create!(name: "Lawrence", specialty: "Orthopedics", university: "Anchultz")
     @doctor_2 = @grace.doctors.create!(name: "Charlie", specialty: "Cardiology", university: "Seattle University")
-    @patient_1 = @doctor_1.patients.create!(name: "Steve Harvey", age: 61)
+    @patient_1 = @doctor_1.patients.create!(name: "Steve Harvey", age: 18)
     @patient_2 = @doctor_1.patients.create!(name: "Joe Schmoe", age: 2)
     @patient_3 = @doctor_1.patients.create!(name: "Lorelei Gilmore", age: 17)
     @patient_4 = @doctor_2.patients.create!(name: "Santa Claus", age: 82)
@@ -18,10 +18,10 @@ RSpec.describe 'the patients index page' do
 
       expect(page).to have_content("Adult Patients")
       expect(page).to have_content("Steve Harvey")
-      expect(page).to_not have_content("Joe Schmoe")
-      expect(page).to_not have_content("Lorelei Gilmore")
       expect(page).to have_content("Santa Claus")
       expect(page).to have_content("Misses Claus")
+      expect(page).to_not have_content("Joe Schmoe")
+      expect(page).to_not have_content("Lorelei Gilmore")
     end
 
     it "has patients in alphabetical order" do

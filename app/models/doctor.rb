@@ -10,4 +10,8 @@ class Doctor < ApplicationRecord
   def patients_count
     patients.count
   end
+
+  def self.patients_count_desc
+    Doctor.all.sort_by(&:patients_count).reverse
+  end
 end

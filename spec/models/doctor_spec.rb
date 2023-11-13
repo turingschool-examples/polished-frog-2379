@@ -33,5 +33,12 @@ RSpec.describe Doctor do
         expect(@doctor_3.patients_count).to eq(0)
       end
     end
+
+
+    describe "#patients_count_desc" do
+      it "gives doctors in descending order of the number of patients in a doctor's caseload" do
+        expect(Doctor.patients_count_desc).to eq([@doctor_1, @doctor_2, @doctor_3])
+      end
+    end
   end
 end

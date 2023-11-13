@@ -18,6 +18,7 @@ RSpec.describe 'the doctor show page' do
       expect(page).to have_content(@doctor_1.name)
       expect(page).to have_content(@doctor_1.specialty)
       expect(page).to have_content(@doctor_1.university)
+      expect(page).to_not have_content(@doctor_2.name)
     end
 
     it "should have the hospital where the doctor works" do
@@ -47,6 +48,7 @@ RSpec.describe 'the doctor show page' do
 
         click_button("Remove from Doctor's Caseload")
       end
+      
       expect(current_path).to eq(doctor_path(@doctor_1))
       expect(page).to_not have_content(@patient_1.name)
       expect(page).to have_content(@patient_2.name)

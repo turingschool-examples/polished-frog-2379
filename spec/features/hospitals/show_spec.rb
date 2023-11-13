@@ -4,10 +4,10 @@ RSpec.describe 'the hospital show page' do
   before :each do
     @grace = Hospital.create!(name: "Grace Memorial")
     @seaside = Hospital.create!(name: "Seaside Health & Wellness Center")
+    @doctor_4 = @grace.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
     @doctor_1 = @grace.doctors.create!(name: "Lawrence", specialty: "Orthopedics", university: "Anchutz")
     @doctor_2 = @grace.doctors.create!(name: "Charlie", specialty: "Cardiology", university: "Seattle University")
     @doctor_3 = @seaside.doctors.create!(name: "Meredith Grey", specialty: "General Surgery", university: "Harvard University")
-    @doctor_4 = @grace.doctors.create!(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
     @patient_1 = @doctor_1.patients.create!(name: "Steve Harvey", age: 61)
     @patient_2 = @doctor_1.patients.create!(name: "Joe Schmoe", age: 2)
     @patient_3 = @doctor_1.patients.create!(name: "Lorelei Gilmore", age: 17)
@@ -31,6 +31,7 @@ RSpec.describe 'the hospital show page' do
       expect(page).to have_content(@doctor_1.name)
       expect(page).to have_content(@doctor_2.name)
       expect(page).to_not have_content(@doctor_3.name)
+      expect(page).to have_content(@doctor_4.name)
     end
 
     it "should have the hospital's doctor's numbers of patients" do
@@ -45,6 +46,13 @@ RSpec.describe 'the hospital show page' do
       within "#doctor-#{@doctor_4.id}" do
         expect(page).to have_content("Number of Patients: 0")
       end
+    end
+
+    it "orders doctors from most to least number of patients" do
+      visit hospital_path(@grace)
+
+      expect(@doctor_1.name).to appear_before(@doctor_2.name)
+      expect(@doctor_2.name).to appear_before(@doctor_4.name)
     end
   end
 end
