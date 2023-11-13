@@ -4,6 +4,6 @@
 <p>Hospital: <%= @doctor.hospital.name %></p>
 <h2>Patients</h2>
 <% @doctor.patients.each do |patient| %>
-    <p><%= patient.name %><%= button_to "Remove Patient", { controller: "doctor_patients", action: 'destroy', id: patient.id, doctor_id: @doctor.id }, method: :delete, data: { turbo: false, testid: "delete_patient_#{patient.id}" } %></p>
+    <p><%= patient.name %><%= button_to "Remove Patient", { controller: "doctor_patients", action: 'destroy', id: patient.id, doctor_id: @doctor.id }, method: :delete, data: { turbo: false } %></p>
  <% end %>
     
