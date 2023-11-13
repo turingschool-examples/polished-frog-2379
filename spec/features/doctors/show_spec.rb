@@ -18,9 +18,7 @@ RSpec.describe "Doctors Show" do
   describe "US1 - doctors show page" do
     describe "I see all the doctors info and the hospital they work at" do
       it "I see the names of all the doctors patients as well" do
-        visit "hospitals/#{@hospital_1.id}/doctors/#{@doctor_1.id}"
-
-        save_and_open_page
+        visit "/doctors/#{@doctor_1.id}"
 
         within "#doctor-info" do
           expect(page).to have_content(@doctor_1.name)
@@ -33,6 +31,32 @@ RSpec.describe "Doctors Show" do
           expect(page).to have_content("Yuji Itadori")
           expect(page).to have_content("Megumi Fushiguro")
           expect(page).to have_content("Maki Zenin")
+        end
+      end
+    end
+  end
+
+  describe "US2 - doctors show page" do
+    describe "I see buttons to remove patients from caseload" do
+      it "removes patients from a doctor" do
+        visit "/doctors/#{@doctor_1.id}"
+
+        within "#doctors-patients" do
+          expect(page).to have_button("Remove #{@patient_1.name} from caseload")
+          expect(page).to have_button("Remove #{@patient_2.name} from caseload")
+          expect(page).to have_button("Remove #{@patient_3.name} from caseload")
+        end
+
+        click_button("Remove #{@patient_2.name} from caseload")
+
+        save_and_open_page
+
+        expect(current_path).to eq("/doctors/#{@doctor_1.id}")
+
+        within "#doctors-patients" do
+          expect(page).to have_no_content(@patient_2.name)
+
+          expect(page).to have_no_button("Remove #{@patient_2.name} from caseload")
         end
       end
     end
