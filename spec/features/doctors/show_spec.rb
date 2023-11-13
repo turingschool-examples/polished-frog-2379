@@ -25,7 +25,7 @@ RSpec.describe "Doctor Show" do
   end
 
   it "I see - Doctor info - Hospital - related patients" do
-    visit "/doctors/#{@doctor1.id}"
+    visit doctor_path(@doctor1)
 
     expect(page).to have_content("#{@doctor1.name}")
     expect(page).to have_content("#{@doctor1.specialty}")
@@ -37,18 +37,18 @@ RSpec.describe "Doctor Show" do
   end
 
   it "has a buttton to remove patient from doctor" do 
-    visit "/doctors/#{@doctor1.id}"
+    visit doctor_path(@doctor1)
 
     expect(page).to have_content("#{@patient1.name}")
 
     expect(page).to have_button("Remove #{@patient1.name}")
     click_button("Remove #{@patient1.name}")
 
-    expect(current_path).to eq("/doctors/#{@doctor1.id}")
+    expect(current_path).to eq(doctor_path(@doctor1))
 
     expect(page).to_not have_content("#{@patient1.name}")
 
-    visit "/doctors/#{@doctor2.id}"
+    visit doctor_path(@doctor2)
 
     expect(page).to have_content(@patient1.name)
   end
