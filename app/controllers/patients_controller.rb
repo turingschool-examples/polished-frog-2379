@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
   def index
-    @adult_patients = Patient.adults
+    @patients = Patient.all
   end
 end
