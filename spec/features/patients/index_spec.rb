@@ -27,8 +27,8 @@ RSpec.describe 'the patients index page' do
     it "has patients in alphabetical order" do
       visit patients_path
 
-      expect(@patient_4).to appear_before(@patient_1)
-      expect(@patient_1).to appear_before(@patient_5)
+      expect(@patient_5.name).to appear_before(@patient_4.name)
+      expect(@patient_4.name).to appear_before(@patient_1.name)
     end
   end
 end
