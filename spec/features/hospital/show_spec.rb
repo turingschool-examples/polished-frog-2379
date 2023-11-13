@@ -1,11 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Hospital do
-  describe "relationships" do
-  it {should have_many :doctors}
-  end
-
-  describe "instance methods" do
+RSpec.describe Hospital, type: :feature do
+  describe "As a visitor" do
     before :each do
       @hospital = Hospital.create!(name: "Grey Sloan Memorial Hospital")
       @hospital_2 = Hospital.create!(name: "Seaside Health & Wellness Center")
@@ -27,12 +23,14 @@ RSpec.describe Hospital do
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_1.id)
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_4.id)
     end
-    it "#doctor_count" do
-    expect(@hospital.doctor_count).to eq(2)
-    end
 
-    it "#doctor_by_patient_count" do
-      expect(@hospital.doctor_by_patients_count).to eq([@doctor_2.name, @doctor_1.name])
+    it "I see the hospital's name, the number of doctors that work at the hospital, and a unique list of universities that the hospital's doctors attended" do
+      visit hospital_path(@hospital)
+      expect(page).to have_content(@hospital.name)
+      expect(page).to have_content(@doctor_2.name)
+      expect(page).to have_content(@doctor_1.name)
+      expect(page).to have_content("Number of Doctors: 2")
+      expect(@doctor_2.name).to appear_before(@doctor_1.name)
     end
   end
 end
