@@ -35,4 +35,26 @@ RSpec.describe 'the doctor show page' do
       expect(page).to_not have_content("Santa Claus")
     end
   end
+
+  describe "User Story 2" do
+    it "can remove patiens from doctors case load" do
+      doctor_patient_1 = DoctorPatient.create!(patient_id: @patient_1.id, doctor_id: @doctor_2.id)
+      visit doctor_path(@doctor_1)
+
+      expect(page).to have_content(@patient_1.name)
+      within "#patient-#{@patient_1.id}" do
+        expect(page).to have_button("Remove from Doctor's Caseload")
+
+        click_button("Remove from Doctor's Caseload")
+      end
+
+      expect(current_path).to eq(doctor_path(@doctor_1))
+      expect(page).to_not have_content(@patient_1.name)
+      expect(page).to have_content(@patient_2.name)
+
+      visit doctor_path(@doctor_2)
+
+      expect(page).to have_content(@patient_1.id)
+    end
+  end
 end
