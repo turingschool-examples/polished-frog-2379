@@ -1,6 +1,6 @@
 <h1>Hospital: <%= @hospital.name %></h1>
 
-<% @hospital.doctors.each do |doctor| %>
+<% @hospital.sort_by_doctor_patient_count.each do |doctor| %>
   <div id="doctor-<%= doctor.id %>">
     <p>
       <%= doctor.name %>
