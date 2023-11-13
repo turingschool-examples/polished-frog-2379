@@ -1,0 +1,7 @@
+<h1>Adult Patient List</h1>
+
+<% @alphabetized.each do |patient| %>
+  <% if patient.adult == true %>
+    <p> <%= patient.name %> </p>
+    <% end %>
+  <% end %>

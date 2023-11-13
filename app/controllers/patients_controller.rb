@@ -1,8 +1,7 @@
 class PatientsController < ApplicationController
 
-# def destroy
-#   @doctor = Doctor.find(params[:doctor_id])
-#   @patient = Patient.find(params[:id])
-#   require 'pry'; binding.pry
-# end
+  def index
+    patients = Patient.all
+    @alphabetized = patients.alphabetize 
+  end
 end

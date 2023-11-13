@@ -33,18 +33,15 @@ RSpec.describe "doctor show" do
   end
 
   it 'allows you to remove a patient' do
-#     When I visit a Doctor's show page
     visit "/doctors/#{@dr2.id}"
-    save_and_open_page
     expect(page).to have_content(@otherpatient1.name)
     expect(page).to have_button("Remove #{@otherpatient1.name}")
+    
     click_button "Remove #{@otherpatient1.name}"
     expect(current_path).to eq("/doctors/#{@dr2.id}")
-    save_and_open_page
     expect(page).to_not have_content(@otherpatient1.name)
     
     visit "/doctors/#{@dr1.id}"
-    save_and_open_page
     expect(page).to have_content(@otherpatient1.name)
 
   end
