@@ -1,0 +1,6 @@
+<%= "Hi, my name is Dr. #{@doctor.name}. I work at #{@doctor.hospital.name}, specializing in #{@doctor.specialty} and I studied at #{@doctor.university}." %>
+
+<section id = "dr-patients">
+  <%@doctor.patients.each do |patient|%>
+    <p><%=patient.name%></p>
+  <%end%>
