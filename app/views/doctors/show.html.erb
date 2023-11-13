@@ -1,8 +1,12 @@
-<%= "Hi, my name is Dr. #{@doctor.name}. I work at #{@doctor.hospital.name}, specializing in #{@doctor.specialty} and I studied at #{@doctor.university}." %>
+<h1><%= "Doctor #{@doctor.id} Show Page" %></h1>
+
+<p><%= "Hi, my name is Dr. #{@doctor.name}. I work at #{@doctor.hospital.name}, specializing in #{@doctor.specialty} and I studied at #{@doctor.university}." %></p>
 
 <section id = "dr-patients">
   <%@doctor.patients.each do |patient|%>
     <section id = "patient-<%=patient.id%>">
     <p><%=patient.name%></p>
     <%= button_to "Delete Patient ##{patient.id}", patient_doctor_path(@doctor.id, patient.id), method: :delete, params: { patient_id: patient.id }, data: { turbo: false }, local: true %>
+    </section>
   <%end%>
+</section>

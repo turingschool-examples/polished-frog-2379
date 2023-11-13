@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "patient index" do
   before :each do
-    @hospital = Hospital.create(name: "St. Turings")
+    @hospital = Hospital.create(name: "St. Turing's")
     @doctor1 = @hospital.doctors.create(name: "Dr. Spaceman", specialty: "Psychology", university: "Columbia")
     @doctor2 = @hospital.doctors.create(name: "Dr. Sameplot", specialty: "torsos", university: "DeVry")
     @patient1 = @doctor1.patients.create(name: "Tracy Jordan", age: 40)
