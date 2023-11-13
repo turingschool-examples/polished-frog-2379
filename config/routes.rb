@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :doctors, only: [:show, :destroy]
+
+  resources :patients, only: :index
 end

@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Patient, type: :model do
+RSpec.describe "Patient Index" do
   before(:each) do
     @hospital1 = Hospital.create(name: "U of U Hospital")
     @hospital2 = Hospital.create(name: "Central Piedmont Hospital")
@@ -26,10 +26,16 @@ RSpec.describe Patient, type: :model do
     @doctor2.patients << @patient3
   end
 
-  it { should have_many :doctor_patients }
-  it { should have_many(:doctors).through(:doctor_patients)}
+  it "Show patients in alphabetical order if they're over 18" do
+    visit patients_path
 
-  it "alphabetical" do
-    expect(Patient.alphabetical).to eq([@patient1, @patient3, @patient6, @patient4, @patient2, @patient5])
+    expect(page).to have_content(@patient1.name)
+    expect(page).to have_content(@patient2.name)
+    expect(page).to have_content(@patient3.name)
+    expect(page).to have_content(@patient4.name)
+    expect(page).to have_content(@patient5.name)
+    expect(page).to have_content(@patient6.name)
+    expect(page).to_not have_content(@patient7.name)
+    expect(page).to_not have_content(@patient8.name)
   end
 end

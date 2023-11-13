@@ -17,6 +17,8 @@
 @patient4 = Patient.create(name: "Maddie", age: 29)
 @patient5 = Patient.create(name: "Shayne", age: 25)
 @patient6 = Patient.create(name: "Johnny", age: 27)
+@patient7 = Patient.create(name: "Billy", age: 16)
+@patient8 = Patient.create(name: "James", age: 9)
 
 @doctor1.patients << @patient1
 @doctor1.patients << @patient2
