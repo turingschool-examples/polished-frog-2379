@@ -1,0 +1,13 @@
+<h3> Information About Doctor <%= @doctor.name%></h3>
+  <section id="doctor-details">
+    <h5> Name: <%= @doctor.name %></h5>
+    <h5> Specialty: <%= @doctor.specialty %></h5>
+    <h5> University: <%= @doctor.university %></h5>
+  </section>
+  <br>
+  <h5> Hospital: <%= @doctor.hospital.name %></h5>
+  <section id="patient-list">
+    <h5> Patients: <% @doctor.patients.each do |p| %></h5>
+      <li><%= p.name%></li>
+    <%end%>
+</section>

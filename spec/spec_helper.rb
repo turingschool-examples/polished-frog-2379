@@ -15,18 +15,18 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 def test_data
-  @hospital1= Hospital.create(Name: "Grey Sloan Memorial Hospital")
-  @hospital2 = Hospital.create(Name: "Seaside Health & Wellness Center")
+  @hospital1= Hospital.create(name: "Grey Sloan Memorial Hospital")
+  @hospital2 = Hospital.create(name: "Seaside Health & Wellness Center")
 
-  @doctor1 = @hospital1.doctors.create(Name: "Meredith Grey", Specialty: "General Surgery", University: "Harvard University")
-  @doctor2 = @hospital1.doctors.create(Name: "Alex Karev", Specialty: "Pediatric Surgery", University: "Johns Hopkins University")
-  @doctor3 = @hospital2.doctors.create(Name: "Miranda Bailey", Specialty: "General Surgery", University: "Stanford University")
-  @doctor4 = @hospital2.doctors.create(Name: "Derek McDreamy Shepherd", Specialty: "Attending Surgeon", University: "University of Pennsylvania")
+  @doctor1 = @hospital1.doctors.create(name: "Meredith Grey", specialty: "General Surgery", university: "Harvard University")
+  @doctor2 = @hospital1.doctors.create(name: "Alex Karev", specialty: "Pediatric Surgery", university: "Johns Hopkins University")
+  @doctor3 = @hospital2.doctors.create(name: "Miranda Bailey", specialty: "General Surgery", university: "Stanford University")
+  @doctor4 = @hospital2.doctors.create(name: "Derek McDreamy Shepherd", specialty: "Attending Surgeon", university: "University of Pennsylvania")
 
-  @patient1 = Patient.create(Name: "Katie Bryce", Age: 24)
-  @patient2 = Patient.create(Name: "Denny Duquette", Age: 39)
-  @patient3 = Patient.create(Name: "Rebecca Pope", Age: 32)
-  @patient4 = Patient.create(Name: "Zola Shepherd", Age: 2)
+  @patient1 = Patient.create(name: "Katie Bryce", age: 24)
+  @patient2 = Patient.create(name: "Denny Duquette", age: 39)
+  @patient3 = Patient.create(name: "Rebecca Pope", age: 32)
+  @patient4 = Patient.create(name: "Zola Shepherd", age: 2)
 
   @doctor_patient1 = DoctorPatient.create(doctor_id: @doctor1.id, patient_id: @patient1.id)
   @doctor_patient1 = DoctorPatient.create(doctor_id: @doctor3.id, patient_id: @patient1.id)
