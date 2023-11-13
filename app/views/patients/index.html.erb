@@ -1,0 +1,6 @@
+<h1>Patients Index Page</h1>
+<% @patients.sort.each do |patient| %>
+  <% if patient.adult? %>
+    <%= patient.name %>
+  <% end %>
+<% end %>

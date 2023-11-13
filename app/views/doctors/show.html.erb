@@ -1,0 +1,11 @@
+<h1><%= "#{@doctor.name} Show Page" %></h1>
+<p><%= "Name: #{@doctor.name}" %></p>
+<p><%= "Specialty: #{@doctor.specialty}" %></p>
+<p><%= "University: #{@doctor.university}" %></p>
+<p><%= "Hospital: #{@doctor.hospital.name}" %></p>
+<h3><%= "#{@doctor.name}'s Patients" %></h3>
+<p><% @doctor.patients.each do |patient| %></p>
+  <section id="patient-doctor-<%= patient.id %>">
+    <p><%= patient.name %><%= button_to "Remove", doctor_patient_doctor_path(@doctor.id, patient), method: :delete, data: {turbo: false} %></p>
+  </section>
+<% end %>
