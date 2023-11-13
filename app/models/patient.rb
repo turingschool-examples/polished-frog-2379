@@ -8,4 +8,12 @@ class Patient < ApplicationRecord
   def self.alphabetical
     all.order('name ASC') 
   end
+
+  def adult?
+    if age >= 18 
+      true
+    else
+      false 
+    end 
+  end
 end
