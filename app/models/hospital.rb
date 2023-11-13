@@ -6,6 +6,6 @@ class Hospital < ApplicationRecord
   end
 
   def doctor_by_patients_count
-    doctors.joins(:patients).group(:id).order('COUNT(patients.id) DESC').map(&:name)
+    doctors.joins(:patients).group(:id).order('COUNT(patients.id) DESC').map(&:name).join(', ')
   end
 end

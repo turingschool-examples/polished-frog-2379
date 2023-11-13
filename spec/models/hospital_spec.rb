@@ -32,7 +32,7 @@ RSpec.describe Hospital do
     end
 
     it "#doctor_by_patient_count" do
-      expect(@hospital.doctor_by_patients_count).to eq([@doctor_2.name, @doctor_1.name])
+      expect(@hospital.doctor_by_patients_count).to eq("Alex Karev, Meredith Grey")
     end
   end
 end

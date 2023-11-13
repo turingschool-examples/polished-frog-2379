@@ -15,7 +15,7 @@ RSpec.describe Doctor, type: :feature do
 
 
       DoctorPatient.create!(doctor_id: @doctor_1.id, patient_id: @patient_1.id)
-
+      
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_3.id)
       DoctorPatient.create!(doctor_id: @doctor_2.id, patient_id: @patient_1.id)
     end
@@ -38,7 +38,6 @@ RSpec.describe Doctor, type: :feature do
       click_button("Remove Patient")
       expect(current_path).to eq(doctor_path(@doctor_1))
       expect(page).to_not have_content(@patient_1.name)
-
       visit doctor_path(@doctor_2)
       expect(page).to have_content(@patient_1.name)
     end

@@ -16,7 +16,7 @@ RSpec.describe Patient, type: :model do
     end
   
     it ".adults_alphabetical"do
-      expect(Patient.adults_alphabetical).to eq([@patient_2.name, @patient_1.name, @patient_3.name])
+      expect(Patient.adults_alphabetical).to eq("Denny Duquette, Katie Bryce, Rebecca Pope")
     end
   end
 end

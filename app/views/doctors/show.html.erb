@@ -1,7 +1,8 @@
 <h1><%= "#{@doctor.name}" %></h1>
-<p><%= @doctor.specialty %></p>
-<p><%= @doctor.university %></p>
-<p><%= @doctor.hospital.name %></p>
+<p>Specialty: <%= @doctor.specialty %></p>
+<p>Univercity: <%= @doctor.university %></p>
+<p>Hospital: <%= @doctor.hospital.name %></p>
+<h2>Patients</h2>
 <% @doctor.patients.each do |patient| %>
     <p><%= patient.name %><%= button_to "Remove Patient", { controller: "doctor_patients", action: 'destroy', id: patient.id, doctor_id: @doctor.id }, method: :delete, data: { turbo: false, testid: "delete_patient_#{patient.id}" } %></p>
  <% end %>
