@@ -6,4 +6,8 @@ class Doctor < ApplicationRecord
   def hospital_name
     hospital.name
   end
+
+  def patients_count
+    patients.count
+  end
 end

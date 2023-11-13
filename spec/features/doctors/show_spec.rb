@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the doctor show page' do
   before :each do
     @grace = Hospital.create!(name: "Grace Memorial")
-    @doctor_1 = @grace.doctors.create!(name: "Lawrence", specialty: "Orthopedics", university: "Anchultz")
+    @doctor_1 = @grace.doctors.create!(name: "Lawrence", specialty: "Orthopedics", university: "Anchutz")
     @doctor_2 = @grace.doctors.create!(name: "Charlie", specialty: "Cardiology", university: "Seattle University")
     @patient_1 = @doctor_1.patients.create!(name: "Steve Harvey", age: 61)
     @patient_2 = @doctor_1.patients.create!(name: "Joe Schmoe", age: 2)
