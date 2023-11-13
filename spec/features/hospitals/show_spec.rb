@@ -27,6 +27,18 @@ RSpec.describe "Hospital Show" do
   end
 
   xit "Show doctors at hospital - ordered by doctor patient count" do
+    @doctor1.patients << @patient4
+    @doctor1.patients << @patient5
+
+    visit hospital_path(@hospital1)
+
+    expect(page).to have_content(@hospital1.name)
+    expect(page).to have_content(@doctor1.name)
+    expect(page).to have_content(@doctor2.name)
+    # save_and_open_page
+    expect(page).to have_content(@doctor1.patients.count)
+    expect(page).to have_content(@doctor2.patients.count)
+    expect(@doctor1.name).to appear_before(@doctor2)
 
   end
 end
