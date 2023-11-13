@@ -8,4 +8,5 @@
 <h2><%= "Doctors Patients" %></h2>
 <% @doctor.patients.each do |patient| %><br>
   <%= patient.name %>
+  <%= button_to "Remove #{patient.name}", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
 <% end %>

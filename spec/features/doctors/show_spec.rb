@@ -52,9 +52,10 @@ RSpec.describe "Doctors Show Page", type: :feature do
               expect(page).to have_content(@patient1.name)
               expect(page).to have_content(@patient2.name)
 
-              expect(page).to have_button("Remove this patient")
-
-              click_button("Remove this patient")
+              expect(page).to have_button("Remove #{@patient1.name}")
+              expect(page).to have_button("Remove #{@patient2.name}")
+              
+              click_button("Remove #{@patient1.name}")
 
               expect(current_path).to eq("/doctors/#{@doctor1.id}")
 
