@@ -64,6 +64,8 @@ RSpec.describe "hospital show", type: :feature do
     end
   end
 
+end
+
 #   Extension, Hospital Show Page
 # ​
 # As a visitor
