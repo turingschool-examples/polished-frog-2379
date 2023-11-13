@@ -1,5 +1,5 @@
 <h1>All Patients</h1>
 
-<% Patient.alphabetical.each do |patient| %>
+<% @patients.each do |patient| %>
   <%= patient.name %><br>
 <% end %>
