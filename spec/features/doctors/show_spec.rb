@@ -13,7 +13,7 @@ RSpec.describe "doctor show" do
     DoctorPatient.create!(doctor: @dr2, patient: @otherpatient1)
     DoctorPatient.create!(doctor: @dr1, patient: @otherpatient2)
     DoctorPatient.create!(doctor: @dr2, patient: @otherpatient2)
-    #I'm not trying to be morbid, my father-in-law is a forensic pathologist, that was one of the first doctors I thought of and his patients are all dead people...
+    #I'm not trying to be morbid, my father-in-law is a forensic pathologist, that was one of the first doctors I thought of and his patients are all dead people...And I didn't notice the data you can use because I initially only read through the extension. Oops
 
 
   end
@@ -43,7 +43,6 @@ RSpec.describe "doctor show" do
     
     visit "/doctors/#{@dr1.id}"
     expect(page).to have_content(@otherpatient1.name)
-
   end
 
 end
