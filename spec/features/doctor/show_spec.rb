@@ -16,8 +16,9 @@ RSpec.describe Doctor, type: :feature do
     @patient4 = Patient.create!(name: "Zola Shephard", age: 2)
 
     @doctorpatient1 = DoctorPatient.create!(doctor_id: @doctor1.id, patient_id: @patient1.id)
-    @doctorpatient12 = DoctorPatient.create!(doctor_id: @doctor2.id, patient_id: @patient1.id)
+    @doctorpatient11 = DoctorPatient.create!(doctor_id: @doctor2.id, patient_id: @patient1.id)
     @doctorpatient2 = DoctorPatient.create!(doctor_id: @doctor2.id, patient_id: @patient2.id)
+    @doctorpatient22 = DoctorPatient.create!(doctor_id: @doctor3.id, patient_id: @patient2.id)
     @doctorpatient3 = DoctorPatient.create!(doctor_id: @doctor3.id, patient_id: @patient3.id)
     @doctorpatient4 = DoctorPatient.create!(doctor_id: @doctor4.id, patient_id: @patient4.id)
   end
@@ -45,6 +46,7 @@ RSpec.describe Doctor, type: :feature do
       expect(page).to have_content("General Surgery")
       expect(page).to have_content("Grey Sloan Memorial Hospital")
       expect(page).to have_content("Rebecca Pope")
+      expect(page).to have_content("Denny Duquette")
 
       visit "/doctors/#{@doctor4.id}"
 
@@ -58,7 +60,7 @@ RSpec.describe Doctor, type: :feature do
 
     
   describe "When I visit a doctor's show page" do
-    xit 'I see a button to remove a patient from that doctors caseload
+    it 'I see a button to remove a patient from that doctors caseload
       When I click that button for one patient
       Im brought back to the Doctors show page
       And I no longer see that patients name listed
@@ -67,11 +69,24 @@ RSpec.describe Doctor, type: :feature do
 
       visit "/doctors/#{@doctor1.id}"
 
-      expect(page).to have_content("Remove Patient")
-      click_button "Remove Patient"
+      expect(page).to have_content("Remove #{@patient1.name}")
+      click_button "Remove #{@patient1.name}"
       expect(current_path).to eq("/doctors/#{@doctor1.id}")
       expect(page).to_not have_content("Katie Bryce")
 
+      visit "/doctors/#{@doctor2.id}"
+      expect(page).to have_content("Katie Bryce")
+
+
+      visit "/doctors/#{@doctor3.id}"
+
+      expect(page).to have_content("Remove #{@patient2.name}")
+      click_button "Remove #{@patient2.name}"
+      expect(current_path).to eq("/doctors/#{@doctor3.id}")
+      expect(page).to_not have_content("Denny Duquette")
+
+      visit "/doctors/#{@doctor2.id}"
+      expect(page).to have_content("Denny Duquette")
     end
   end
 end
