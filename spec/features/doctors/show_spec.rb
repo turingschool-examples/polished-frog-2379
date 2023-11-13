@@ -5,6 +5,7 @@ RSpec.describe "the Doctors show page" do
     @hospital1 = Hospital.create!(name: "General Hospital")
 
     @doctor1 = @hospital1.doctors.create!(name: "Joseph Lee", specialty: "Pediatrics", university: "Harvard University")
+    @doctor2 = @hospital1.doctors.create!(name: "James Smith", specialty: "Heart Surgery", university: "Brown University")
 
     @patient1 = Patient.create!(name: "Josh Campbell", age: 37)
     @patient2 = Patient.create!(name: "Rebecca Joy", age: 26)
@@ -14,6 +15,7 @@ RSpec.describe "the Doctors show page" do
     DoctorPatient.create!(doctor: @doctor1, patient: @patient1)
     DoctorPatient.create!(doctor: @doctor1, patient: @patient2)
     DoctorPatient.create!(doctor: @doctor1, patient: @patient4)
+    DoctorPatient.create!(doctor: @doctor2, patient: @patient1)
     visit doctor_path(@doctor1)
   end
 
@@ -26,5 +28,18 @@ RSpec.describe "the Doctors show page" do
     expect(page).to have_content("#{@patient1.name}")
     expect(page).to have_content("#{@patient2.name}")
     expect(page).to have_content("#{@patient4.name}")
+  end
+
+  it "should have a button to remove the patient from the doctor's workload and the other doctor still has the patient" do
+    expect(page).to have_button("Remove #{@patient1.name}")
+    click_on("Remove #{@patient1.name}")
+    expect(current_path).to eq("/doctors/#{@doctor1.id}")
+
+    expect(page).to_not have_content("#{@patient1.name}")
+    expect(@doctor1.patients).to eq([@patient2, @patient4])
+
+    visit doctor_path(@doctor2)
+    expect(page).to have_content(@patient1.name)
+    expect(@doctor2.patients).to eq([@patient1])
   end
 end

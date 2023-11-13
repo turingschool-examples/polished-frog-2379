@@ -4,8 +4,11 @@
 <p><u>Hospital</u>: <%= @doctor.hospital.name %></p>
 
 <p><u>List of Patients</u>:</p>
-<% @doctor.patients.each do |patient| %>
-  <li>
-    <%= patient.name %>
-  </li>
+  <% @doctor.patients.each do |patient| %>
+    <section id="status-update-<%= patient.id %>">
+      <li>
+      <%= patient.name %>
+      <%= button_to "Remove #{patient.name}", "/doctors/#{@doctor.id}/doctor_patients/#{patient.id}", method: :delete %>
+      </li>
+    </section>
 <% end %>

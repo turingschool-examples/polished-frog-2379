@@ -5,6 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <% flash.each do |key, value| %>
+      <div class="alert <%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
