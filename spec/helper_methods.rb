@@ -13,6 +13,7 @@ def load_test_data
 
   DoctorPatient.create({doctor_id: @doctor1.id, patient_id: @patient3.id})
   DoctorPatient.create({doctor_id: @doctor1.id, patient_id: @patient2.id})
+  DoctorPatient.create({doctor_id: @doctor2.id, patient_id: @patient2.id})
   DoctorPatient.create({doctor_id: @doctor2.id, patient_id: @patient1.id})
   DoctorPatient.create({doctor_id: @doctor2.id, patient_id: @patient4.id})
   DoctorPatient.create({doctor_id: @doctor3.id, patient_id: @patient3.id})
