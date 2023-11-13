@@ -3,6 +3,29 @@
 # The generated `.rspec` file contains `--require spec_helper` which will cause
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
+
+def test_data
+
+  @greysloan = Hospital.create!(name: "Grey Sloan Memorial Hospital")
+
+  @meredith = @greysloan.doctors.create!(name: "Meredith Grey", specialty: "General", university: "Dartmouth College")
+  @cristina = @greysloan.doctors.create!(name: "Cristina Yang", specialty: "Cardio", university: "Stanford University")
+  @alex = @greysloan.doctors.create!(name: "Alex Karev", specialty: "Pediatric", university: "University of Iowa")
+  @mark = @greysloan.doctors.create!(name: "Mark Sloan", specialty: "Plastic", university: "Columbia University")
+  @derek = @greysloan.doctors.create!(name: "Derek Shepherd", specialty: "Neuro", university: "Columbia University")
+
+  @patient1 = Patient.create!(name: "Alexander Ball", age: 20)
+  @patient2 = Patient.create!(name: "Erin Banks", age: 15)
+  @patient3 = Patient.create!(name: "Devon Gomez", age: 12)
+  @patient4 = Patient.create!(name: "Clara Green", age: 30)
+  @patient5 = Patient.create!(name: "Warren Griffith", age: 52)
+
+  
+
+
+
+end
+
 #
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
