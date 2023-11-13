@@ -2,6 +2,6 @@
 
 
 <h3>Doctors</h3>
-  <% @doctors.each do |doctor| %>
-    <h4><%= doctor.name %> Patient Load: <%= doctor.patient_load %></h4>
+  <% @doctor_list.each do |doctor| %>
+    <p><h4><%= doctor.name %> Patient Load: <%= doctor.patient_load %></h4> </p>
     <% end %>

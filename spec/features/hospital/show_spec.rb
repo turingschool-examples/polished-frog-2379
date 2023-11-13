@@ -10,6 +10,7 @@ RSpec.describe "hospital show" do
     @deadperson2 = @dr2.patients.create!(name: "Jane Doe", age: 90)
     @otherpatient1 = Patient.create!(name: "JS Bach", age: 65)
     @otherpatient2 = Patient.create!(name: "Debussy", age: 55)
+    @newpatient = @dr3.patients.create!(name: "new", age: 55)
     DoctorPatient.create!(doctor: @dr1, patient: @otherpatient1)
     DoctorPatient.create!(doctor: @dr2, patient: @otherpatient1)
     DoctorPatient.create!(doctor: @dr1, patient: @otherpatient2)
@@ -34,8 +35,10 @@ RSpec.describe "hospital show" do
     end
 
     it 'lists the doctors by amount of patients, most to least' do
-
-
+      visit "hospitals/#{@hospital.id}"
+      save_and_open_page
+      expect(@dr2.name).to appear_before(@dr1.name)
+      expect(@dr1.name).to appear_before(@dr3.name)
 
     end
   end

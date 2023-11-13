@@ -6,4 +6,9 @@ class Doctor < ApplicationRecord
   def patient_load
     self.patients.count
   end
+
+  
+  def self.busiest_to_least
+    self.joins(:patients).group(:id).order('COUNT(patients.id) DESC')
+  end
 end
