@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :doctors, only: [:show]
+  resources :doctors, only: [:show] do
+    resources :patients, only: [:destroy], :controller => "doctor_patients"
+  end
 end

@@ -5,6 +5,9 @@
 <h3>Patients</h3>
 <ul>
   <% @patients.each do |patient| %>
-    <li><p><%= patient.name %></p></li>
+    <div id="patient-<%= patient.id %>">
+      <li><p><%= patient.name %></p></li>
+      <%= button_to "Remove from Doctor's Caseload", "/doctors/#{@doctor.id}/patients/#{patient.id}", method: :delete %>
+    </div>
   <% end %>
 </ul>
