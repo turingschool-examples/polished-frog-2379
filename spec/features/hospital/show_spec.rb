@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Doctor do
+RSpec.describe "hospital show" do
   before (:each) do
     @hospital = Hospital.create!(name: "Anschutz")
     @dr1 = @hospital.doctors.create!(name: "Dr. Ruth", specialty: "TBD", university: "Georgetown?")
@@ -16,24 +16,28 @@ RSpec.describe Doctor do
     DoctorPatient.create!(doctor: @dr1, patient: @otherpatient2)
     DoctorPatient.create!(doctor: @dr2, patient: @otherpatient2)
   end
-  it {should belong_to :hospital}
-  it {should have_many :doctor_patients}
-  it {should have_many(:patients).through(:doctor_patients)}
-  
-  describe 'patient load' do
-    it 'should tell how many patients' do
-      expect(@dr1.patient_load).to eq(2)
-      expect(@dr2.patient_load).to eq(4)
-      expect(@dr3.patient_load).to eq(1)  
-    end
-  end
 
-  describe 'busiest_to_least' do
-    it 'lines them up by how many patients they have' do
-      expect(Doctor.busiest_to_least).to eq([@dr2, @dr1, @dr3])
-    
+  describe "hospital_staff" do 
+    it 'shows the hospitals name' do
+      visit "hospitals/#{@hospital.id}"
+      expect(page).to have_content(@hospital.name)
     end
   
-  end
+    it 'shows all the doctors and their patient load' do 
+      visit "hospitals/#{@hospital.id}"
+      expect(page).to have_content(@dr1.name)
+      expect(page).to have_content(@dr1.patients.count)
+      expect(page).to have_content(@dr2.patients.count)
+      expect(page).to have_content(@dr2.name)
+      expect(page).to have_content(@dr3.name)
+      expect(page).to have_content(@dr3.patients.count)
+  
+    end
 
+    it 'lists the doctors by amount of patients, most to least' do
+      visit "hospitals/#{@hospital.id}"
+      expect(@dr2.name).to appear_before(@dr1.name)
+      expect(@dr1.name).to appear_before(@dr3.name)
+    end
+  end
 end
