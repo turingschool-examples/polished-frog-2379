@@ -1,11 +1,14 @@
 <h1> Doctor Show Page </h1>
 
   <p> Name: <%= @doc.name %></p>
-  <p> Specialty: <%= @doc.specialty %>
-  <p> University: <%= @doc.university %>
+  <p> Specialty: <%= @doc.specialty %></p>
+  <p> University: <%= @doc.university %></p>
 
-  <p> Hospital: <%= @doc.hospital.name %>
+  <p> Hospital: <%= @doc.hospital.name %></p>
   <p> Patients: <% @doc.patients.each do |patient| %></p>
-    <%= patient.name %>
-    <%= patient.age %>
+    <div id=<%="patient-#{patient.id}"%>>
+      <%= patient.name %>,
+      <%= patient.age %>
+      <%= button_to "Remove", "/doctors/#{@doc.id}/patients/#{patient.id}", method: :delete, data: {turbo: false} %>
+    </div>
   <% end %>
