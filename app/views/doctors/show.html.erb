@@ -7,7 +7,7 @@
 <ul>
   <% @doctor.patients.each do |p| %>
     <div id="patient-<%= p.id %>">
-      <li><%= p.name %> <%= button_to "Remove", patient_path(p, doctor_id: @doctor.id), method: :delete%></li>
+      <li><%= p.name %> <%= button_to "Remove", doctor_patient_path(@doctor, patient_id: p.id), method: :delete%></li>
     </div>
     <br>
   <% end %>
