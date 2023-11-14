@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper" 
 
-RSpec.describe Hospital do
+RSpec.describe "Hospitals Show Page" do 
   before(:each) do 
     @grey_sloan = Hospital.create!({name: "Grey Sloan Memorial Hospital"})
     @seaside = Hospital.create!({name: "Seaside Health & Wellness Center"})
@@ -20,34 +20,31 @@ RSpec.describe Hospital do
     @mirbecca = PatientDoctor.create!({patient_id: @rebecca.id, doctor_id: @miranda.id})
     @zoladeth = PatientDoctor.create!({patient_id: @zola.id, doctor_id: @meredith.id})
     @mcbecca = PatientDoctor.create!({patient_id: @rebecca.id, doctor_id: @mcdreamy.id})
-    @mcdenny = PatientDoctor.create!({patient_id: @denny.id, doctor_id: @mcdreamy.id})
   end
-  describe "relationships" do 
-    it { should have_many :doctors }
-  end
-
-  describe "validations" do
-    it { should validate_presence_of :name }
-  end
-
-  describe "it exists" do 
-    it "is created as a Hospital class" do 
-      @hospital = Hospital.create!({name: "Seattle Grace"})
-      
-      expect(@hospital.class).to eq(Hospital)
-    end
     
-    it "is created with a name attribute" do 
-      @hospital = Hospital.create!({name: "Seattle Grace"})
-      expect(@hospital.name).to eq("Seattle Grace")
-    end
+  it "displays the hospital name and the names of all the doctors who work at that hospital" do 
+
+    visit "/hospitals/#{@grey_sloan.id}"
+    
+    expect(page).to have_content("Grey Sloan Memorial Hospital")
+    expect(page).to have_content("Doctor: Meredith Grey")
+    expect(page).to have_content("Number of Patients: 2")
+    expect(page).to have_content("Doctor: Alex Karev")
+    expect(page).to have_content("Number of Patients: 1")
+
+    expect(page).to_not have_content("Doctor: Miranda Bailey")
+    expect(page).to_not have_content("Doctor: Derek 'McDreamy' Shepherd")
+
+    visit "/hospitals/#{@seaside.id}"
+
+    expect(page).to have_content("Seaside Health & Wellness Center")
+    expect(page).to have_content("Doctor: Miranda Baile")
+    expect(page).to have_content("Number of Patients: 1")
+    expect(page).to have_content("Doctor: Derek 'McDreamy' Shepherd")
+    expect(page).to have_content("Number of Patients: 1")
+
+    expect(page).to_not have_content("Doctor: Meredith Grey")
+    expect(page).to_not have_content("Doctor: Alex Karev")
   end
-  describe "instance methods" do 
-    describe "#sort_by_patient_count" do 
-      it "sorts a hospital's doctors in descending order of their patient count" do 
-        expect(@grey_sloan.sort_by_patient_count).to eq([@meredith, @alex])
-        expect(@seaside.sort_by_patient_count).to eq([@mcdreamy, @miranda])
-      end
-    end
-  end
-end
+   
+end 

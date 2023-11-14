@@ -6,19 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# PatientDoctor.destroy_all
-# Patient.destroy_all
-# Doctor.destroy_all
-# Hospital.destroy_all
+PatientDoctor.destroy_all
+Patient.destroy_all
+Doctor.destroy_all
+Hospital.destroy_all
 
-# @hospital = Hospital.create!({name: "Seattle Grace"})
-# @doctor = Doctor.create!({name: "Dr. Dave", specialty: "Emergency Medicine", university: "University of Chicago", hospital_id: @hospital.id})
-# @doctor2 = Doctor.create!({name: "Dr. John", specialty: "Heart Surgeon", university: "Harvard Medical", hospital_id: @hospital.id})
+@grey_sloan = Hospital.create!({name: "Grey Sloan Memorial Hospital"})
+@seaside = Hospital.create!({name: "Seaside Health & Wellness Center"})
 
-# @patient0 = Patient.create!({name: "Patient Zero", age: 26})
-# @patient1 = Patient.create!({name: "Patient One", age: 39})
+@meredith = Doctor.create!({name: "Meredith Grey", specialty: "General Surgery", education: "Harvard University", hospital_id: @grey_sloan.id})
+@alex = Doctor.create!({name: "Alex Karev", specialty: "Pediatric Surgery", education: "Johns Hopkins University", hospital_id: @grey_sloan.id})
+@miranda = Doctor.create!({name: "Miranda Bailey", specialty: "General Surgery", education: "Stanford University", hospital_id: @seaside.id})
+@mcdreamy = Doctor.create!({name: "Derek 'McDreamy' Shepherd", specialty: "Attending Surgeon", education: "University of Pennsylvania", hospital_id: @seaside.id})
 
-# @patient0_doctor = PatientDoctor.create!({patient_id: @patient0.id, doctor_id: @doctor.id})
-# @patient0_doctor2 = PatientDoctor.create!({patient_id: @patient0.id, doctor_id: @doctor2.id})
-# @patient1_doctor = PatientDoctor.create!({patient_id: @patient1.id, doctor_id: @doctor.id})
-# @patient1_doctor2 = PatientDoctor.create!({patient_id: @patient1.id, doctor_id: @doctor2.id})
+@katie = Patient.create!({name: "Katie Bryce", age: 24})
+@denny = Patient.create!({name: "Denny Duquette", age: 39})
+@rebecca = Patient.create!({name: "Rebecca Pope", age: 32})
+@zola = Patient.create!({name: "Zola Shepherd", age: 2})
+
+@merekate= PatientDoctor.create!({patient_id: @katie.id, doctor_id: @meredith.id})
+@denalex = PatientDoctor.create!({patient_id: @alex.id, doctor_id: @alex.id})
+@mirbecca = PatientDoctor.create!({patient_id: @rebecca.id, doctor_id: @rebecca.id})
+@mczola = PatientDoctor.create!({patient_id: @zola.id, doctor_id: @meredith.id})

@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "Doctors Show Page" do 
   before(:each) do 
     @hospital = Hospital.create!({name: "Seattle Grace"})
-    @doctor = Doctor.create!({name: "Dr. Dave", specialty: "Emergency Medicine", university: "University of Chicago", hospital_id: @hospital.id})
-    @doctor2 = Doctor.create!({name: "Dr. John", specialty: "Heart Surgeon", university: "Harvard Medical", hospital_id: @hospital.id})
+    @doctor = Doctor.create!({name: "Dr. Dave", specialty: "Emergency Medicine", education: "University of Chicago", hospital_id: @hospital.id})
+    @doctor2 = Doctor.create!({name: "Dr. John", specialty: "Heart Surgeon", education: "Harvard Medical", hospital_id: @hospital.id})
 
     @patient0 = Patient.create!({name: "Patient Zero", age: 26})
     @patient1 = Patient.create!({name: "Patient One", age: 39})
